@@ -23,3 +23,10 @@ def updaate_book(db : Session, book:BookCreate , book_id : int):
         db.commit()
         db.refresh(book_queryset)
     return book_queryset
+
+def delete_book(db : Session,id:int):
+    book_queryset = db.query(Book).filter(Book.id ==id).first()
+    if book_queryset:
+        db.delete(book_queryset)
+        db.commit()
+    return book_queryset
