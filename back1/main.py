@@ -11,7 +11,7 @@ def get_all_books(db : Session = Depends(get_db)):
 
 @app.get("/books/{id}",response_model=schemas.Book)
 def get_book_by_id(id : int,db : Session = Depends(get_db)):
-    book_queryset = services.get_books(db,id)
+    book_queryset = services.get_book(db,id)
     if book_queryset:
         return book_queryset
     raise HTTPException(status_code=404, detail="Invalid book id provided")
@@ -27,7 +27,7 @@ def update_book(book : schemas.BookCreate,id : int ,db : Session = Depends(get_d
         raise HTTPException(status_code=404,detail="Book not found")
     return db_update
 
-@app.delete("/book/,{id}",response_model=schemas.Book)
+@app.delete("/book/{id}",response_model=schemas.Book)
 def delete_book(id:int,db : Session = Depends(get_db)):
     delete_entry = services.delete_book(db,id)
     if delete_entry:

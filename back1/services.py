@@ -10,12 +10,12 @@ def create_book(db: Session, data : BookCreate):
     return book_instance
 
 def get_books(db : Session):
-    return db.query(Book).all(db)
+    return db.query(Book).all()
 
-def get_books(db : Session, book_id : int):
+def get_book(db : Session, book_id : int):
     return db.query(Book).filter(Book.id ==book_id).first()
 
-def updaate_book(db : Session, book:BookCreate , book_id : int):
+def update_book(db : Session, book:BookCreate , book_id : int):
     book_queryset = db.query(Book).filter(Book.id ==book_id).first()
     if book_queryset:
         for key , value in book.model_dump().items():
