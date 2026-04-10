@@ -15,3 +15,10 @@ class  Book(BookBase):
 
     class config:
         from_attribute = True
+
+#python -m IPython
+# import db, models
+
+# db.create_table()
+
+# exitim
