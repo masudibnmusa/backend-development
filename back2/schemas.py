@@ -14,3 +14,4 @@ class Book(BaseModel):
 
     class config:
         from_attribute = True
+
