@@ -26,7 +26,6 @@ def update_book(book : schemas.BookCreate,id : int ,db : Session = Depends(get_d
     if not db_update:
         raise HTTPException(status_code=404,detail="Book not found")
     return db_update
-
 @app.delete("/book/{id}",response_model=schemas.Book)
 def delete_book(id:int,db : Session = Depends(get_db)):
     delete_entry = services.delete_book(db,id)
